@@ -225,8 +225,7 @@ Blockly.Toolbox.prototype.position = function() {
     } else {  // Left
       treeDiv.style.left = '0';
     }
-    treeDiv.style.height = this.getHeight() + 'px';
-    treeDiv.style.width = this.width + 'px';
+    treeDiv.style.height = '100%';
   }
   this.flyout_.position();
 };
@@ -375,7 +374,7 @@ Blockly.Toolbox.CategoryMenu.prototype.createDom = function() {
   <table class="scratchCategoryMenu">
   </table>
   */
-  this.table = goog.dom.createDom('table', 'scratchCategoryMenu');
+  this.table = goog.dom.createDom('div', 'scratchCategoryMenu');
   this.parentHtml_.appendChild(this.table);
 };
 
@@ -403,11 +402,10 @@ Blockly.Toolbox.CategoryMenu.prototype.populate = function(domTree) {
     categories.push(child);
   }
 
-  // Create single column of categories
+  // Create a single column of categories
   for (var i = 0; i < categories.length; i++) {
     var child = categories[i];
-    console.log(child);
-    var row = goog.dom.createDom('tr', 'scratchCategoryMenuRow');
+    var row = goog.dom.createDom('div', 'scratchCategoryMenuRow');
     this.table.appendChild(row);
     if (child) {
       this.categories_.push(new Blockly.Toolbox.Category(this, row,
@@ -472,7 +470,7 @@ Blockly.Toolbox.Category.prototype.dispose = function() {
  */
 Blockly.Toolbox.Category.prototype.createDom = function() {
   var toolbox = this.parent_.parent_;
-  this.item_ = goog.dom.createDom('td',
+  this.item_ = goog.dom.createDom('div',
       {'class': 'scratchCategoryMenuItem'},
       this.name_);
   this.bubble_ = goog.dom.createDom('div', {

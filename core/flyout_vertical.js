@@ -262,6 +262,8 @@ Blockly.VerticalFlyout.prototype.position = function() {
     var x = this.parentToolbox_.HtmlDiv.offsetLeft;
     var y = this.parentToolbox_.HtmlDiv.offsetTop +
         this.parentToolbox_.getHeight();
+      y = 0;
+      x = 60; // this.parentToolbox_.getWidth();
   } else {
     var x = this.toolboxPosition_ == Blockly.TOOLBOX_AT_RIGHT ?
         targetWorkspaceMetrics.viewWidth - this.width_ : 0;
