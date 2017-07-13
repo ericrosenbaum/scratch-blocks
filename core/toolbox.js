@@ -179,7 +179,22 @@ Blockly.Toolbox.prototype.createFlyout_ = function() {
  */
 Blockly.Toolbox.prototype.populate_ = function(newTree) {
   this.categoryMenu_.populate(newTree);
+
+  this.showAll();
+
   this.setSelectedItem(this.categoryMenu_.categories_[0]);
+};
+
+/**
+ * Show the blocks for all categories in the flyout
+ */
+Blockly.Toolbox.prototype.showAll = function() {
+  var allContents = [];
+  for (var i=0; i<this.categoryMenu_.categories_.length; i++) {
+    var category = this.categoryMenu_.categories_[i];
+    allContents = allContents.concat(category.getContents());
+  }
+  this.flyout_.show(allContents);
 };
 
 /**
@@ -296,10 +311,12 @@ Blockly.Toolbox.prototype.getClientRect = function() {
  * procedures.
  */
 Blockly.Toolbox.prototype.refreshSelection = function() {
-  var selectedItem = this.getSelectedItem();
-  if (selectedItem && selectedItem.getContents()) {
-    this.flyout_.show(selectedItem.getContents());
-  }
+  // var selectedItem = this.getSelectedItem();
+  // if (selectedItem && selectedItem.getContents()) {
+  //   this.flyout_.show(selectedItem.getContents());
+  // }
+  console.log('refreshSelection');
+  // this.showAll(); // this somehow causes an infinite loop?
 };
 
 /**
@@ -325,8 +342,15 @@ Blockly.Toolbox.prototype.setSelectedItem = function(item) {
   this.selectedItem_ = item;
   if (this.selectedItem_ != null) {
     this.selectedItem_.setSelected(true);
-    this.flyout_.show(item.getContents());
-    this.flyout_.scrollToStart();
+
+    // Scroll flyout to the top of the selected category
+    var categoryName = item.name_;
+    for (var i=0; i<this.flyout_.buttons_.length; i++) {
+      if (this.flyout_.buttons_[i].text_ === categoryName) {
+        this.flyout_.scrollTo(this.flyout_.buttons_[i].position_.y);
+        return;
+      }
+    }
   }
 };
 
@@ -384,8 +408,6 @@ Blockly.Toolbox.CategoryMenu.prototype.createDom = function() {
  * @param {Node} domTree DOM tree of blocks, or null.
  */
 Blockly.Toolbox.CategoryMenu.prototype.populate = function(domTree) {
-  console.log('populate toolbox');
-
   if (!domTree) {
     return;
   }
