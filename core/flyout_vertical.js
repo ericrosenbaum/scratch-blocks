@@ -331,6 +331,14 @@ Blockly.VerticalFlyout.prototype.scrollToStart = function() {
   this.scrollbar_.set(0);
 };
 
+
+/**
+ * Scroll the flyout to a position.
+ */
+Blockly.VerticalFlyout.prototype.scrollTo = function(pos) {
+  this.scrollbar_.set(pos * this.workspace_.scale);
+};
+
 /**
  * Scroll the flyout.
  * @param {!Event} e Mouse wheel scroll event.
