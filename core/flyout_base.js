@@ -461,6 +461,14 @@ Blockly.Flyout.prototype.show = function(xmlList) {
   var gaps = [];
   this.permanentlyDisabled_.length = 0;
   for (var i = 0, xml; xml = xmlList[i]; i++) {
+    // Handle the data category, which appears as a string
+    if (typeof xmlList[i] === 'string') {
+      var fnToApply = this.workspace_.targetWorkspace.getToolboxCategoryCallback(
+          xmlList[i]);
+        var newList = fnToApply(this.workspace_.targetWorkspace);
+        xmlList = xmlList.slice(0,i-1).concat(newList).concat(xmlList.slice(i));
+        xml = xmlList[i-1];
+    }
     if (xml.tagName) {
       var tagName = xml.tagName.toUpperCase();
       var default_gap = this.horizontalLayout_ ? this.GAP_X : this.GAP_Y;
