@@ -442,32 +442,24 @@ Blockly.Flyout.prototype.show = function(xmlList) {
   this.hide();
   this.clearOldBlocks_();
 
-  // Handle dynamic categories, represented by a name instead of a list of XML.
-  // Look up the correct category generation function and call that to get a
-  // valid XML list.
-  if (typeof xmlList == 'string') {
-    var fnToApply = this.workspace_.targetWorkspace.getToolboxCategoryCallback(
-        xmlList);
-    goog.asserts.assert(goog.isFunction(fnToApply),
-        'Couldn\'t find a callback function when opening a toolbox category.');
-    xmlList = fnToApply(this.workspace_.targetWorkspace);
-    goog.asserts.assert(goog.isArray(xmlList),
-        'The result of a toolbox category callback must be an array.');
-  }
-
   this.setVisible(true);
   // Create the blocks to be shown in this flyout.
   var contents = [];
   var gaps = [];
   this.permanentlyDisabled_.length = 0;
   for (var i = 0, xml; xml = xmlList[i]; i++) {
-    // Handle the data category, which appears as a string
+  // Handle the dynamic category for variables, represented by a name instead of a list of XML.
+  // Look up the correct category generation function and call that to get a
+  // valid XML list.
     if (typeof xmlList[i] === 'string') {
+      console.log(xmlList[i]);
       var fnToApply = this.workspace_.targetWorkspace.getToolboxCategoryCallback(
           xmlList[i]);
         var newList = fnToApply(this.workspace_.targetWorkspace);
-        xmlList = xmlList.slice(0,i-1).concat(newList).concat(xmlList.slice(i));
-        xml = xmlList[i-1];
+        // insert the new list of variable blocks in the middle of the list
+        xmlList.splice(i,1, ...newList);
+        xml = xmlList[i];
+        debugger;
     }
     if (xml.tagName) {
       var tagName = xml.tagName.toUpperCase();

@@ -315,8 +315,7 @@ Blockly.Toolbox.prototype.refreshSelection = function() {
   // if (selectedItem && selectedItem.getContents()) {
   //   this.flyout_.show(selectedItem.getContents());
   // }
-  console.log('refreshSelection');
-  // this.showAll(); // this somehow causes an infinite loop?
+  this.showAll();
 };
 
 /**
