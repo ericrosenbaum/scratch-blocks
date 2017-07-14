@@ -459,7 +459,6 @@ Blockly.Flyout.prototype.show = function(xmlList) {
         // insert the new list of variable blocks in the middle of the list
         xmlList.splice(i,1, ...newList);
         xml = xmlList[i];
-        debugger;
     }
     if (xml.tagName) {
       var tagName = xml.tagName.toUpperCase();
