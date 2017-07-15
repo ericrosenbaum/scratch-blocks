@@ -452,12 +452,14 @@ Blockly.Flyout.prototype.show = function(xmlList) {
   // Look up the correct category generation function and call that to get a
   // valid XML list.
     if (typeof xmlList[i] === 'string') {
-      console.log(xmlList[i]);
       var fnToApply = this.workspace_.targetWorkspace.getToolboxCategoryCallback(
           xmlList[i]);
         var newList = fnToApply(this.workspace_.targetWorkspace);
+        // create the category label by copying the first node (the 'motion' label)
+        var labelNode = xmlList[0].cloneNode(true);
+        labelNode.setAttribute('text', 'Data');
         // insert the new list of variable blocks in the middle of the list
-        xmlList.splice(i,1, ...newList);
+        xmlList.splice(i,1, labelNode, ...newList);
         xml = xmlList[i];
     }
     if (xml.tagName) {
