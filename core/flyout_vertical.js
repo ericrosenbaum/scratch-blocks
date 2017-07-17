@@ -336,8 +336,24 @@ Blockly.VerticalFlyout.prototype.scrollToStart = function() {
  * Scroll the flyout to a position.
  */
 Blockly.VerticalFlyout.prototype.scrollTo = function(pos) {
-  this.scrollbar_.set(pos * this.workspace_.scale);
+  // this.scrollbar_.set(pos * this.workspace_.scale);
+
+  this.target = pos * this.workspace_.scale;
+
+  window.requestAnimationFrame(this.step.bind(this));
 };
+
+Blockly.VerticalFlyout.prototype.step = function() {
+  if (!this.target) return;
+  var scrollYPos = -this.workspace_.scrollY;
+  var diff = this.target - scrollYPos;
+  if (Math.abs(diff) < 1) {
+    this.scrollbar_.set(this.target);
+    return;
+  }
+  this.scrollbar_.set(scrollYPos + diff * 0.3);
+  window.requestAnimationFrame(this.step.bind(this));
+}
 
 /**
  * Scroll the flyout.
@@ -345,6 +361,8 @@ Blockly.VerticalFlyout.prototype.scrollTo = function(pos) {
  * @private
  */
 Blockly.VerticalFlyout.prototype.wheel_ = function(e) {
+  this.target = null;
+
   var delta = e.deltaY;
 
   if (delta) {
