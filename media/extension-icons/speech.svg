@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>speech-add-button</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M28,14.7926421 C28,20.1973244 22.6354515,24.5719064 16,24.5719064 C15.1438127,24.5719064 14.3010033,24.5050167 13.4983278,24.3578595 L7.34448161,27.6889632 L8.24080268,22.2441472 C5.64548495,20.4648829 4,17.7892977 4,14.7926421 C4,9.38795987 9.37792642,5 16,5 C22.6354515,5 28,9.38795987 28,14.7926421 Z" id="path-1"></path>
+        <filter x="-8.3%" y="-8.8%" width="116.7%" height="117.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="1" dy="-2" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="speech-add-button">
+            <g id="Page-1">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <path stroke-opacity="0.1" stroke="#000000" stroke-width="1" d="M7.69654261,22.4721309 L6.85112181,27.6077467 L6.6854298,28.6142639 L7.58249999,28.1286759 L13.5832488,24.8804445 C14.3463826,25.0089385 15.1562104,25.0719064 16,25.0719064 C22.8904476,25.0719064 28.5,20.4995593 28.5,14.7926421 C28.5,9.08341841 22.8874744,4.5 16,4.5 C9.12134742,4.5 3.5,9.08708873 3.5,14.7926421 C3.5,17.7873239 5.05465419,20.5564802 7.69654261,22.4721309 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>
