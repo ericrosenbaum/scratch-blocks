@@ -361,12 +361,24 @@ Blockly.VerticalFlyout.prototype.wheel_ = function(e) {
     // When the flyout moves from a wheel event, hide WidgetDiv and DropDownDiv.
     Blockly.WidgetDiv.hide(true);
     Blockly.DropDownDiv.hideWithoutAnimation();
+
+    this.selectCategoryByScrollPosition(pos);
   }
 
   // Don't scroll the page.
   e.preventDefault();
   // Don't propagate mousewheel event (zooming).
   e.stopPropagation();
+};
+
+Blockly.VerticalFlyout.prototype.selectCategoryByScrollPosition = function(pos) {
+    var scaledPos = pos / this.workspace_.scale;
+    for (var i=this.categoryScrollPositions.length-1; i>=0; i--) {
+      if (scaledPos > this.categoryScrollPositions[i].position) {
+        this.parentToolbox_.selectCategoryByName(this.categoryScrollPositions[i].categoryName);
+        return;
+      }
+    }
 };
 
 /**
