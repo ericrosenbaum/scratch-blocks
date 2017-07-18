@@ -444,6 +444,7 @@ Blockly.Flyout.prototype.show = function(xmlList) {
 
   this.setVisible(true);
   // Create the blocks to be shown in this flyout.
+  Blockly.Field.startCache();
   var contents = [];
   var gaps = [];
   this.permanentlyDisabled_.length = 0;
@@ -516,6 +517,8 @@ Blockly.Flyout.prototype.show = function(xmlList) {
 
   this.workspace_.setResizesEnabled(true);
   this.reflow();
+
+  Blockly.Field.stopCache();
 
   // Correctly position the flyout's scrollbar when it opens.
   this.position();
