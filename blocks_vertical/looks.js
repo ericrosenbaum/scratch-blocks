@@ -153,7 +153,8 @@ Blockly.Blocks['looks_effect_menu_options'] = [
   ['pixelate', 'PIXELATE'],
   ['mosaic', 'MOSAIC'],
   ['brightness', 'BRIGHTNESS'],
-  ['ghost', 'GHOST']
+  ['ghost', 'GHOST'],
+  ['glitch', 'GLITCH']
 ];
 
 Blockly.Blocks['looks_changeeffectby'] = {
