@@ -606,7 +606,9 @@ Blockly.Flyout.prototype.recordCategoryScrollPositions_ = function() {
     var length = nextPos - currentPos;
     this.categoryScrollPositions[i].length = length;
   }
-  this.categoryScrollPositions[numCategories - 1].length = 0;
+  if (this.categoryScrollPositions.length > 1) {
+    this.categoryScrollPositions[numCategories - 1].length = 0;
+  }
   // Record the id of each category.
   for (var i = 0; i < numCategories; i++) {
     var category = this.parentToolbox_.getCategoryByIndex(i);
