@@ -124,6 +124,14 @@ Blockly.Blocks['looks_show'] = {
   init: function() {
     this.jsonInit({
       "message0": Blockly.Msg.LOOKS_SHOW,
+      "args0": [
+        {
+          "type": "field_image",
+          "src": Blockly.mainWorkspace.options.pathToMedia + "looks-show.svg",
+          "width": 24,
+          "height": 24
+        }
+      ],
       "category": Blockly.Categories.looks,
       "extensions": ["colours_looks", "shape_statement"]
     });
@@ -138,6 +146,14 @@ Blockly.Blocks['looks_hide'] = {
   init: function() {
     this.jsonInit({
       "message0": Blockly.Msg.LOOKS_HIDE,
+      "args0": [
+        {
+          "type": "field_image",
+          "src": Blockly.mainWorkspace.options.pathToMedia + "looks-hide.svg",
+          "width": 24,
+          "height": 24
+        }
+      ],
       "category": Blockly.Categories.looks,
       "extensions": ["colours_looks", "shape_statement"]
     });

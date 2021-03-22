@@ -324,6 +324,12 @@ Blockly.Blocks['motion_changexby'] = {
       "message0": Blockly.Msg.MOTION_CHANGEXBY,
       "args0": [
         {
+          "type": "field_image",
+          "src": Blockly.mainWorkspace.options.pathToMedia + "motion-x.svg",
+          "width": 24,
+          "height": 24
+        },
+        {
           "type": "input_value",
           "name": "DX"
         }
@@ -343,6 +349,12 @@ Blockly.Blocks['motion_setx'] = {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_SETX,
       "args0": [
+        {
+          "type": "field_image",
+          "src": Blockly.mainWorkspace.options.pathToMedia + "motion-x.svg",
+          "width": 24,
+          "height": 24
+        },
         {
           "type": "input_value",
           "name": "X"
@@ -364,6 +376,12 @@ Blockly.Blocks['motion_changeyby'] = {
       "message0": Blockly.Msg.MOTION_CHANGEYBY,
       "args0": [
         {
+          "type": "field_image",
+          "src": Blockly.mainWorkspace.options.pathToMedia + "motion-y.svg",
+          "width": 24,
+          "height": 24
+        },
+        {
           "type": "input_value",
           "name": "DY"
         }
@@ -383,6 +401,12 @@ Blockly.Blocks['motion_sety'] = {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_SETY,
       "args0": [
+        {
+          "type": "field_image",
+          "src": Blockly.mainWorkspace.options.pathToMedia + "motion-y.svg",
+          "width": 24,
+          "height": 24
+        },
         {
           "type": "input_value",
           "name": "Y"
